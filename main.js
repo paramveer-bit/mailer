@@ -1,5 +1,7 @@
 import express from 'express';
 import Helper from './mailHelper.js';
+import cors  from 'cors';
+
 
 const handelRequest = async (req,res) => {
     const {to, subject, text, html,from} = req.body;
@@ -29,6 +31,9 @@ const handelRequest = async (req,res) => {
 
 const app = express();
 app.use(express.json());
+
+app.use(cors());
+
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
