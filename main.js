@@ -12,11 +12,12 @@ const handelRequest = async (req,res) => {
     }
     try {
         const messageId = await Helper(to, subject, text, html);
+        return res.status(200).send({ messageId, message: "Message sent Successfully" });
+
     } catch (error) {
         console.log(error);
-        res.status(500).send('Internal Server Error');
+        return res.status(500).send('Internal Server Error');
     }
-    res.status(200).send({ messageId, message: "Message sent Successfully" });
 }
 
 
